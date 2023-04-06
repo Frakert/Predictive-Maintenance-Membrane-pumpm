@@ -32,11 +32,11 @@ ODBC_string="DSN=Freek;Driver={AspenTech SQLplus}"
 
 
 #Define the NAME LIKE from the name getting querry. This case 5IAL is latex, 301 is mixing vessel.
-Name_Like='%5IAL_3_%301%'
+Name_Like='%P800%'
 
 #Define data start and end times here and only here.
-start='6-APR-23 00:01'
-end='6-APR-23 23:59'
+start='10-APR-22 12:00'
+end='4-APR-23 23:59'
 
 datetime_start = datetime.strptime(start, '%d-%b-%y %H:%M') # ignore this
 datetime_end = datetime.strptime(end, '%d-%b-%y %H:%M') # ignore this
@@ -73,7 +73,7 @@ for i in range(len(names)):
     tag = names['NAME_LIST'][i]
     
     query= 'SELECT VALUE AS "%s"'\
-           'FROM HISTORY(80)'\
+           'FROM HISTORY(10)'\
            "WHERE (TS BETWEEN '%s' AND '%s') AND NAME='%s';"% (tag, start, end, tag)
           
     data=pd.read_sql(query,conn)
@@ -90,88 +90,11 @@ print('Exporting Data all done!')
 
 #%% Close connection, possible memory leak
 conn.close()
-
-#%% Plot gotten data
+#%%
 import pandas as pd
 import matplotlib.pyplot as plt
 
 data=pd.read_csv(filepath,parse_dates=[1])
 
-flow_norm=(data['5IAL_3_FIT301.61MF']-40.062658)/60.937859
-pres_norm=(data['5IAL_3_P301.70']-0.486876)/0.859226
-pres_pump_norm=(data['5IAL_3_PIT 301.55']-0.19296170517190583)/0.38171527018994034
-
-data['frac']=(pres_norm/flow_norm)
-
-# =============================================================================
-# 
-# plt.plot(data['0'],data['frac'])
-# plt.tick_params(axis='x', labelrotation=90)
-# plt.ylim([0,2])
-# plt.title('Data Fraction')
-# plt.figure()
-# 
-# =============================================================================
-data['frac']= (abs(data['frac']) < 3) * data['frac']
-
-#data['frac']= (norm['frac'] > 0) * norm['frac']
-
-                                             
-
-data['frac'] = data['frac'].rolling(60*6).mean() 
-
-
-
-# =============================================================================
-# plt.plot(data['0'],data['frac'])
-# plt.tick_params(axis='x', labelrotation=90)
-# plt.title('6 hours rolling mean frac')
-# plt.figure()
-# =============================================================================
-
-
-
-plt.plot(data['0'],pres_norm,data['0'],flow_norm,data['0'],pres_pump_norm,'r')
+plt.plot(data['0'],data['5IAFL_3_P800-PIT403.50'].rolling(60*24*7).mean())
 plt.tick_params(axis='x', labelrotation=45)
-plt.ylabel('Normalised Data')
-plt.xlabel('Date and Time')
-plt.title('Normalised press and flow data')
-plt.legend(['Press Norm','Flow norm'])
-plt.ylim([0,2.3])
-plt.figure()
-
-
-
-plt.plot(data['0'],pres_norm,data['0'],flow_norm)
-plt.tick_params(axis='x', labelrotation=45)
-plt.ylabel('Normalised Data')
-plt.xlabel('Date and Time')
-plt.title('Normalised press and flow data')
-plt.legend(['Press Norm','Flow norm'])
-plt.ylim([0,2.3])
-plt.figure()
-
-
-
-
-plt.plot(data['0'],data['5IAL_3_FIT301.61MF'])
-plt.tick_params(axis='x', labelrotation=45)
-plt.title('Raw flow')
-plt.figure()
-
-
-
-#%%
-import seaborn as sns
-
-plt.plot(data['0'],data['5IAL_3_P301.70'])
-plt.tick_params(axis='x', labelrotation=90)
-sns.lineplot(data['0'],data['5IAL_3_PIT 301.55'],hue=data['5IAL_3_301.BatchName'])
-plt.figure()
-
-plt.plot(data['0'],data['5IAL_3_FIT301.61D'])
-plt.tick_params(axis='x', labelrotation=45)
-
-#%%
-import plotly.express as px
-fig=px.line(x=data['0'],y=data['5IAL_3_FIT301.61D'])
