@@ -23,6 +23,9 @@ from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
 import pyodbc
+import time
+
+time_start=time.time()
 
 #%% Settings
 
@@ -32,11 +35,11 @@ ODBC_string="DSN=Freek;Driver={AspenTech SQLplus}"
 
 
 #Define the NAME LIKE from the name getting querry. This case 5IAL is latex, 301 is mixing vessel.
-Name_Like='%5IAL_3_%301%'
+Name_Like='%5IAL%301%'
 
 #Define data start and end times here and only here.
-start='6-APR-23 00:01'
-end='6-APR-23 23:59'
+start='26-APR-23 6:01'
+end='26-APR-23 23:59'
 
 datetime_start = datetime.strptime(start, '%d-%b-%y %H:%M') # ignore this
 datetime_end = datetime.strptime(end, '%d-%b-%y %H:%M') # ignore this
@@ -88,12 +91,16 @@ for i in range(len(names)):
 df.to_csv(filepath)
 print('Exporting Data all done!')
 
-#%% Close connection, possible memory leak
+#%% Close connection
 conn.close()
+
+time_elapsed=time.time()-time_start
+print('Time elapsed to get {} rows of data: {}'.format(len(date_range),time_elapsed))
 
 #%% Plot gotten data
 import pandas as pd
 import matplotlib.pyplot as plt
+
 
 data=pd.read_csv(filepath,parse_dates=[1])
 
@@ -102,6 +109,10 @@ pres_norm=(data['5IAL_3_P301.70']-0.486876)/0.859226
 pres_pump_norm=(data['5IAL_3_PIT 301.55']-0.19296170517190583)/0.38171527018994034
 
 data['frac']=(pres_norm/flow_norm)
+
+plt.plot(data['0'],data['frac'])
+plt.figure()
+
 
 # =============================================================================
 # 
@@ -118,9 +129,10 @@ data['frac']= (abs(data['frac']) < 3) * data['frac']
 
                                              
 
-data['frac'] = data['frac'].rolling(60*6).mean() 
+data['frac'] = data['frac'].rolling(60*24*7).mean() 
 
-
+plt.plot(data['0'],data['frac'])
+plt.figure()
 
 # =============================================================================
 # plt.plot(data['0'],data['frac'])
@@ -129,7 +141,8 @@ data['frac'] = data['frac'].rolling(60*6).mean()
 # plt.figure()
 # =============================================================================
 
-
+plt.figure()
+import seaborn as sns
 
 plt.plot(data['0'],pres_norm,data['0'],flow_norm,data['0'],pres_pump_norm,'r')
 plt.tick_params(axis='x', labelrotation=45)
@@ -140,7 +153,16 @@ plt.legend(['Press Norm','Flow norm'])
 plt.ylim([0,2.3])
 plt.figure()
 
+plt.plot(data['0'],pres_norm,'k')
+sns.lineplot(x=data['0'],y=flow_norm,hue=data['5IAL_3_301.BatchName'])
+plt.tick_params(axis='x', labelrotation=45)
+plt.ylabel('Normalised Data')
+plt.xlabel('Date and Time')
+plt.title('Normalised press and flow data')
+plt.ylim([0,2.3])
+plt.figure()
 
+#%%
 
 plt.plot(data['0'],pres_norm,data['0'],flow_norm)
 plt.tick_params(axis='x', labelrotation=45)
@@ -161,6 +183,7 @@ plt.figure()
 
 
 
+
 #%%
 import seaborn as sns
 
@@ -171,7 +194,15 @@ plt.figure()
 
 plt.plot(data['0'],data['5IAL_3_FIT301.61D'])
 plt.tick_params(axis='x', labelrotation=45)
+plt.figure()
 
 #%%
 import plotly.express as px
 fig=px.line(x=data['0'],y=data['5IAL_3_FIT301.61D'])
+
+plt.plot(data['0'],data['5IAL_3_PIT 301.55'])
+plt.ylabel('Pressure [Bar]')
+plt.title('Pressure behind pump')
+plt.ylim([0,1])
+
+
