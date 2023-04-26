@@ -140,8 +140,11 @@ class Membrane_Model:
         
         self.X=X
 
-    def Predict(self):
-        pass
+    def predict(self):
+        import xgboost as xgb
+        
+        model=xgb.XGBClassifier(colsample_bytree=0.7, learning_rate=0.1, max_depth=3, n_estimators= 500)
+        model.load_model(self.current_path+'\\XGBoost_Membrane_Model.json')
         
         
 #%% Unit Test!
@@ -163,3 +166,7 @@ if __name__ ==  '__main__':
     X=Membrane_Model.X
 
     print(X.columns)
+
+#%%
+if __name__ ==  '__main__':
+    Membrane_Model.predict()
