@@ -13,8 +13,10 @@ class Membrane_Model:
 
         
     def clean_data(self):
-        import pandas as pd
+        
+
         import tsfresh
+        import pandas as pd
 
         raw_data=self.raw_data
         raw_data['5IAL_3_301.BatchName']= raw_data['5IAL_3_301.BatchName'].fillna('No Batch Specified')
@@ -95,12 +97,20 @@ class Membrane_Model:
         series=pd.Series(batch_types_list)
         series= series.replace({'IU7':'IU70'})
         
-        One_hot=pd.get_dummies(series)
+        all_ink_types=pd.Series(['YP58','CD1','KD1', 'MD1', 'YD1', 'YP70', 'KP70', 'CP70', 'MP70', 'YB2', 'CB2',
+                         'KC1', 'KB2', 'MB2', 'MP55', 'CP55', 'KP55', 'YP55', 'KP58', 'CP58', 'MP58', 'YC1',
+                         'CC1', 'MC1', 'IU70', 'CGB2', 'CGD1'])
+        inks_not_in_dataset=all_ink_types[~(all_ink_types.isin(series.unique()))]
+        empty_one_hot_inktypes = pd.DataFrame(0, index=np.arange(len(series)), columns=inks_not_in_dataset)
+
+        one_hot=pd.concat([pd.get_dummies(series),empty_one_hot_inktypes],axis=1)
         
         # Rethink implementation of tsfresh string later
         tsfresh_fc_parameters={'5IAL_3_WY301.54': {'absolute_maximum': None, 'maximum': None, 'mean_n_absolute_max': [{'number_of_maxima': 7}], 'quantile': [{'q': 0.9}, {'q': 0.8}]}, '5IAL_3_TT301.50': {'fft_coefficient': [{'attr': 'angle', 'coeff': 0}, {'attr': 'real', 'coeff': 1}], 'index_mass_quantile': [{'q': 0.1}, {'q': 0.2}], 'energy_ratio_by_chunks': [{'num_segments': 10, 'segment_focus': 0}, {'num_segments': 10, 'segment_focus': 4}, {'num_segments': 10, 'segment_focus': 3}], 'variation_coefficient': None, 'change_quantiles': [{'f_agg': 'mean', 'isabs': True, 'qh': 0.4, 'ql': 0.0}, {'f_agg': 'mean', 'isabs': True, 'qh': 0.2, 'ql': 0.0}], 'agg_linear_trend': [{'attr': 'rvalue', 'chunk_len': 10, 'f_agg': 'mean'}, {'attr': 'rvalue', 'chunk_len': 5, 'f_agg': 'mean'}, {'attr': 'rvalue', 'chunk_len': 5, 'f_agg': 'min'}, {'attr': 'rvalue', 'chunk_len': 5, 'f_agg': 'max'}, {'attr': 'slope', 'chunk_len': 5, 'f_agg': 'min'}], 'linear_trend': [{'attr': 'rvalue'}, {'attr': 'slope'}], 'ar_coefficient': [{'coeff': 0, 'k': 10}], 'number_crossing_m': [{'m': 1}]}, '5IAL_3_FIT301.61MF': {'agg_linear_trend': [{'attr': 'rvalue', 'chunk_len': 50, 'f_agg': 'max'}]}, '5IAL_3_QIT301.52': {'energy_ratio_by_chunks': [{'num_segments': 10, 'segment_focus': 7}, {'num_segments': 10, 'segment_focus': 6}, {'num_segments': 10, 'segment_focus': 8}], 'index_mass_quantile': [{'q': 0.2}], 'c3': [{'lag': 1}]}, '5IAL_3_FIT301.61D': {'quantile': [{'q': 0.9}, {'q': 0.8}, {'q': 0.7}, {'q': 0.4}, {'q': 0.6}], 'median': None, 'mean_n_absolute_max': [{'number_of_maxima': 7}], 'matrix_profile': [{'feature': 'max', 'threshold': 0.98}, {'feature': '75', 'threshold': 0.98}]}, '5IAL_3_PIT301.63': {'cwt_coefficients': [{'coeff': 6, 'w': 2, 'widths': (2, 5, 10, 20)}, {'coeff': 7, 'w': 2, 'widths': (2, 5, 10, 20)}, {'coeff': 5, 'w': 2, 'widths': (2, 5, 10, 20)}, {'coeff': 2, 'w': 2, 'widths': (2, 5, 10, 20)}, {'coeff': 5, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 6, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 4, 'w': 2, 'widths': (2, 5, 10, 20)}, {'coeff': 4, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 8, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 11, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 3, 'w': 2, 'widths': (2, 5, 10, 20)}, {'coeff': 7, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 1, 'w': 2, 'widths': (2, 5, 10, 20)}, {'coeff': 14, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 10, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 9, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 13, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 10, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 3, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 12, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 9, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 11, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 8, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 13, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 2, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 12, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 7, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 14, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 1, 'w': 5, 'widths': (2, 5, 10, 20)}, {'coeff': 6, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 8, 'w': 2, 'widths': (2, 5, 10, 20)}, {'coeff': 5, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 4, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 14, 'w': 20, 'widths': (2, 5, 10, 20)}, {'coeff': 3, 'w': 10, 'widths': (2, 5, 10, 20)}, {'coeff': 13, 'w': 20, 'widths': (2, 5, 10, 20)}, {'coeff': 12, 'w': 20, 'widths': (2, 5, 10, 20)}], 'quantile': [{'q': 0.8}, {'q': 0.9}, {'q': 0.3}, {'q': 0.2}, {'q': 0.1}, {'q': 0.4}, {'q': 0.6}, {'q': 0.7}], 'agg_linear_trend': [{'attr': 'intercept', 'chunk_len': 5, 'f_agg': 'min'}, {'attr': 'intercept', 'chunk_len': 10, 'f_agg': 'min'}, {'attr': 'intercept', 'chunk_len': 5, 'f_agg': 'mean'}, {'attr': 'intercept', 'chunk_len': 5, 'f_agg': 'max'}, {'attr': 'intercept', 'chunk_len': 10, 'f_agg': 'mean'}, {'attr': 'intercept', 'chunk_len': 50, 'f_agg': 'min'}, {'attr': 'intercept', 'chunk_len': 10, 'f_agg': 'max'}, {'attr': 'intercept', 'chunk_len': 50, 'f_agg': 'max'}, {'attr': 'intercept', 'chunk_len': 50, 'f_agg': 'mean'}], 'linear_trend': [{'attr': 'intercept'}], 'maximum': None, 'mean_n_absolute_max': [{'number_of_maxima': 7}], 'absolute_maximum': None, 'c3': [{'lag': 1}, {'lag': 2}, {'lag': 3}], 'minimum': None, 'root_mean_square': None, 'mean': None, 'median': None, 'abs_energy': None}, '5IAL_3_XPV301.13': {'minimum': None}, '5IAL_3_R301.71': {'number_cwt_peaks': [{'n': 5}]}, '5IAL_3_P301.72': {'agg_linear_trend': [{'attr': 'rvalue', 'chunk_len': 10, 'f_agg': 'min'}, {'attr': 'slope', 'chunk_len': 10, 'f_agg': 'min'}]}, 'frac': {'cwt_coefficients': [{'coeff': 7, 'w': 5, 'widths': (2, 5, 10, 20)}]}}
         
-        tsfresh_features=tsfresh.extract_features(data_norm, column_id="5IAL_3_301.BatchName", default_fc_parameters=tsfresh_fc_parameters)
+        data_norm_imp=data_norm.fillna(0)
+        
+        tsfresh_features=tsfresh.extract_features(data_norm_imp, column_id="5IAL_3_301.BatchName", kind_to_fc_parameters=tsfresh_fc_parameters)
         
         """
         -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -121,22 +131,35 @@ class Membrane_Model:
         #X_t = Eind.drop(['5IAL_3_301.BatchName'],axis=1)
         X_t=Eind
         X_t=X_t.fillna(0)
-   
-        X=pd.concat([X_t,tsfresh_features],axis=1)
-        X=pd.concat([X,One_hot],axis=1)
         
-        self.__X=X
+        X=pd.concat([X_t,one_hot],axis=1)
+        X=X.set_index(['5IAL_3_301.BatchName'])
+        
+        X=pd.concat([X,tsfresh_features],axis=1)
+
+        
+        self.X=X
+
+    def Predict(self):
+        pass
+        
         
 #%% Unit Test!
 import os
 import pandas as pd
 import numpy as np
 
+if __name__ ==  '__main__':
+    test_data=pd.read_csv(os.getcwd()+'\Test_Data.csv',parse_dates=[1],index_col=[0])
+    test_data.rename(columns={'0':'Date'},inplace=True)
+    test_data.head()
 
-test_data=pd.read_csv(os.getcwd()+'\Test_Data.csv',parse_dates=[1],index_col=[0])
-test_data.rename(columns={'0':'Date'},inplace=True)
-test_data.head()
+    Membrane_Model=Membrane_Model(test_data)
+    Membrane_Model.clean_data()
+    print(Membrane_Model.X)
+    
+#%%
+if __name__ ==  '__main__':
+    X=Membrane_Model.X
 
-Membrane_Model=Membrane_Model(test_data)
-Membrane_Model.clean_data()
-print(Membrane_Model.X)
+    print(X.columns)
