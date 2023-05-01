@@ -1,0 +1,2 @@
+set HTTP_PROXY=http://proxy.oce.net:81
+set HTTPS_PROXY=http://proxy.oce.net:81
