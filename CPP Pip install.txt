@@ -1,0 +1,17 @@
+CPP has a proxy in place, this makes it so that pip install will not work on default.
+When pip install can not find an instance of a package, or has http timeout its useually the proxies fault.
+
+To fix this proxy settings need to be set.
+
+When in command promt(cmd) or powershell:
+
+set HTTP_PROXY=http://proxy.oce.net:81
+set HTTPS_PROXY=http://proxy.oce.net:81
+
+When in Anacona, edit the .condarc file or got to preferences to add:
+
+proxy_servers:
+  http: http://proxy.oce.net:81
+  https: http://proxy.oce.net:81
+
+I have yet to find a way to install packages within a compiler (like visual studio code or Spyder).
