@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Mar 30 09:40:27 2023
+ 
+aanpassing
 
 @author: klabbf
 """
