@@ -1,0 +1,562 @@
+<!DOCTYPE DEXXMLDoc SYSTEM "DEXXMLDoc.DTD">
+<DEXXMLDoc name="Main_Design.dxpx" creator="DX13" version="13.0.5.0">
+<designInfo studyType="Factorial" studySubType="Randomized" designType="Factorial2" noOfRuns="68" noOfFactors="4" noOfResponses="1" noOfAnalyses="1">
+<designNotes>This data file created by Design-Expert 13.</designNotes>
+</designInfo>
+<blockInfo>
+<block code="0" name="Block 1"/>
+</blockInfo>
+<factorInfo>
+<factor id="A" name="Max_Depth" unit="-" type="Numeric" uuid="4078cec4-7602-0000-3084-a1c476020000">
+<numeric format="General" low="-1" high="1" stdDev="0"/>
+</factor>
+<factor id="B" name="Learning_Rate" unit="-" type="Numeric" uuid="4078cec4-7602-0000-3084-a1c476020000">
+<numeric format="General" low="-1" high="1" stdDev="0"/>
+</factor>
+<factor id="C" name="n_estimators" unit="-" type="Numeric" uuid="4078cec4-7602-0000-3084-a1c476020000">
+<numeric format="General" low="-1" high="1" stdDev="0"/>
+</factor>
+<factor id="D" name="colsample" unit="-" type="Numeric" uuid="4078cec4-7602-0000-3084-a1c476020000">
+<numeric format="General" low="-1" high="1" stdDev="0"/>
+</factor>
+</factorInfo>
+<constraintInfo/>
+<responseInfo>
+<response id="1" name="R1" unit="" type="Normal" format="General" responseUuId="b23dba81-0123-48ba-880d-c508fe1fbcb1"/>
+</responseInfo>
+<guiState>
+<designLayout>
+<visibleColumns>
+<column type="stdorder">
+<width>35</width>
+</column>
+<column type="runorder">
+<width>35</width>
+</column>
+<column id="A" type="factor">
+<width>95</width>
+</column>
+<column id="B" type="factor">
+<width>95</width>
+</column>
+<column id="C" type="factor">
+<width>95</width>
+</column>
+<column id="D" type="factor">
+<width>95</width>
+</column>
+<column id="1" type="response">
+<width>95</width>
+</column>
+</visibleColumns>
+</designLayout>
+<perspectives>
+<report name="main_frame" width="0" height="0"></report>
+</perspectives>
+</guiState>
+<designModel terms="16">
+<designTerm id="0" coef="1" term="Intercept"/>
+<designTerm id="1" coef="1" term="A"/>
+<designTerm id="2" coef="1" term="B"/>
+<designTerm id="3" coef="1" term="C"/>
+<designTerm id="4" coef="1" term="D"/>
+<designTerm id="5" coef="1" term="AB"/>
+<designTerm id="6" coef="1" term="AC"/>
+<designTerm id="7" coef="1" term="AD"/>
+<designTerm id="8" coef="1" term="BC"/>
+<designTerm id="9" coef="1" term="BD"/>
+<designTerm id="10" coef="1" term="CD"/>
+<designTerm id="11" coef="1" term="ABC"/>
+<designTerm id="12" coef="1" term="ABD"/>
+<designTerm id="13" coef="1" term="ACD"/>
+<designTerm id="14" coef="1" term="BCD"/>
+<designTerm id="15" coef="1" term="ABCD"/>
+</designModel>
+<run stdNo="30" dsnId="9" runNo="1" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="4" dsnId="2" runNo="2" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="65" dsnId="1" runNo="3" blockNo="0" blockName="Block 1" pointId="7" pointName="Center" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">0</facActual>
+<facActual id="B">0</facActual>
+<facActual id="C">0</facActual>
+<facActual id="D">0</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="29" dsnId="9" runNo="4" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="40" dsnId="11" runNo="5" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="50" dsnId="14" runNo="6" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="36" dsnId="10" runNo="7" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="24" dsnId="7" runNo="8" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="35" dsnId="10" runNo="9" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="37" dsnId="11" runNo="10" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="34" dsnId="10" runNo="11" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="63" dsnId="17" runNo="12" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="32" dsnId="9" runNo="13" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="68" dsnId="1" runNo="14" blockNo="0" blockName="Block 1" pointId="7" pointName="Center" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">0</facActual>
+<facActual id="B">0</facActual>
+<facActual id="C">0</facActual>
+<facActual id="D">0</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="39" dsnId="11" runNo="15" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="38" dsnId="11" runNo="16" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="18" dsnId="6" runNo="17" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="16" dsnId="5" runNo="18" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="11" dsnId="4" runNo="19" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="64" dsnId="17" runNo="20" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="31" dsnId="9" runNo="21" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="51" dsnId="14" runNo="22" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="2" dsnId="2" runNo="23" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="57" dsnId="16" runNo="24" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="58" dsnId="16" runNo="25" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="1" dsnId="2" runNo="26" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="14" dsnId="5" runNo="27" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="13" dsnId="5" runNo="28" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="25" dsnId="8" runNo="29" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="33" dsnId="10" runNo="30" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="27" dsnId="8" runNo="31" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="49" dsnId="14" runNo="32" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="48" dsnId="13" runNo="33" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="66" dsnId="1" runNo="34" blockNo="0" blockName="Block 1" pointId="7" pointName="Center" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">0</facActual>
+<facActual id="B">0</facActual>
+<facActual id="C">0</facActual>
+<facActual id="D">0</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="52" dsnId="14" runNo="35" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="15" dsnId="5" runNo="36" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="53" dsnId="15" runNo="37" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="26" dsnId="8" runNo="38" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="20" dsnId="6" runNo="39" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="60" dsnId="16" runNo="40" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="6" dsnId="3" runNo="41" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="46" dsnId="13" runNo="42" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="10" dsnId="4" runNo="43" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="28" dsnId="8" runNo="44" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="44" dsnId="12" runNo="45" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="8" dsnId="3" runNo="46" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="56" dsnId="15" runNo="47" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="3" dsnId="2" runNo="48" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="55" dsnId="15" runNo="49" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="43" dsnId="12" runNo="50" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="61" dsnId="17" runNo="51" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="54" dsnId="15" runNo="52" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="9" dsnId="4" runNo="53" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="19" dsnId="6" runNo="54" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="42" dsnId="12" runNo="55" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="62" dsnId="17" runNo="56" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="21" dsnId="7" runNo="57" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="59" dsnId="16" runNo="58" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="47" dsnId="13" runNo="59" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="22" dsnId="7" runNo="60" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="67" dsnId="1" runNo="61" blockNo="0" blockName="Block 1" pointId="7" pointName="Center" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">0</facActual>
+<facActual id="B">0</facActual>
+<facActual id="C">0</facActual>
+<facActual id="D">0</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="23" dsnId="7" runNo="62" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="7" dsnId="3" runNo="63" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="17" dsnId="6" runNo="64" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="41" dsnId="12" runNo="65" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="45" dsnId="13" runNo="66" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="5" dsnId="3" runNo="67" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">1</facActual>
+<facActual id="B">-1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<run stdNo="12" dsnId="4" runNo="68" blockNo="0" blockName="Block 1" pointId="11" pointName="Factorial" buildPointId="5" buildPointName="NA" note="" rowStatus="Normal">
+<facActual id="A">-1</facActual>
+<facActual id="B">1</facActual>
+<facActual id="C">-1</facActual>
+<facActual id="D">-1</facActual>
+<resVal id="1">Missing</resVal>
+</run>
+<responseModel rmId="1" analysisUuId="e538cad9-f9b2-4758-acbe-0f0408f7aa51" name="R1">
+<response id="1" responseUuId="b23dba81-0123-48ba-880d-c508fe1fbcb1" modelBase="Factorial" stdDevSource="ANOVA" stdDev="0"/>
+<transform id="0" name="None" successLevel="1"/>
+</responseModel>
+<optimization models="6">
+<criteria modType="Factor" id="1" goal="InRange" type="Numeric" target="0" limitLow="-1" limitHigh="1" weightLow="1" weightHigh="1" overlayLow="Missing" overlayHigh="Missing" importance="3" coding="Actual" scale="Transform" displayScale="Original"/>
+<criteria modType="Factor" id="2" goal="InRange" type="Numeric" target="0" limitLow="-1" limitHigh="1" weightLow="1" weightHigh="1" overlayLow="Missing" overlayHigh="Missing" importance="3" coding="Actual" scale="Transform" displayScale="Original"/>
+<criteria modType="Factor" id="3" goal="InRange" type="Numeric" target="0" limitLow="-1" limitHigh="1" weightLow="1" weightHigh="1" overlayLow="Missing" overlayHigh="Missing" importance="3" coding="Actual" scale="Transform" displayScale="Original"/>
+<criteria modType="Factor" id="4" goal="InRange" type="Numeric" target="0" limitLow="-1" limitHigh="1" weightLow="1" weightHigh="1" overlayLow="Missing" overlayHigh="Missing" importance="3" coding="Actual" scale="Transform" displayScale="Original"/>
+</optimization>
+<buildInfo noOfCenterPoints="4" noOfFullFactors="4" baseFactors="ABCD" noOfReplicates="4" buildTime="0"/>
+</DEXXMLDoc>
