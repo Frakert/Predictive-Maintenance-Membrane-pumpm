@@ -30,8 +30,8 @@ time_start=time.time()
 #%% Settings
 
 #pyodbc connection string, see its documentation for help.
-#Get AspenTech instaled for drivers, then define a user Data Source Name (DSN). In this case called freek. 
-ODBC_string="DSN=Freek;Driver={AspenTech SQLplus}"
+#Get AspenTech instaled for drivers, then define a user Data Source Name (DSN). In this case called Aspen_Connect. 
+ODBC_string="DSN=Aspen_Connect;Driver={AspenTech SQLplus}"
 
 
 #Define the NAME LIKE from the name getting querry. This case 5IAL is latex, 301 is mixing vessel.
@@ -49,7 +49,7 @@ datetime_end = datetime.strptime(end, '%d-%b-%y %H:%M') # ignore this
 filename= 'Data_' + Name_Like + '_from_' + datetime_start.strftime("%Y-%m-%d_%H_%M") + '_until_' + datetime_end.strftime("%Y-%m-%d_%H_%M")
  
 #Define the folder where the data is stored, %s.csv inserts the filename string.
-filepath='C:/Users/klabbf/OneDrive - Canon Production Printing Netherlands B.V/Documents/Data-Excel/Python scripting/%s.csv'%(filename)
+filepath='C:/Users/klabbf/OneDrive - Canon Production Printing Netherlands B.V/Documents/Data-Excel/Python scripting/' + '%s.csv'%(filename)
 
 #%% SQL Connection and name Query
 
@@ -96,95 +96,6 @@ conn.close()
 
 time_elapsed=time.time()-time_start
 print('Time elapsed to get {} rows of data: {}'.format(len(date_range),time_elapsed))
-
-#%% Plot gotten data
-import pandas as pd
-import matplotlib.pyplot as plt
-
-
-data=pd.read_csv(filepath,parse_dates=[1])
-
-flow_norm=(data['5IAL_3_FIT301.61MF']-40.062658)/60.937859
-pres_norm=(data['5IAL_3_P301.70']-0.486876)/0.859226
-pres_pump_norm=(data['5IAL_3_PIT 301.55']-0.19296170517190583)/0.38171527018994034
-
-data['frac']=(pres_norm/flow_norm)
-
-plt.plot(data['0'],data['frac'])
-plt.figure()
-
-
-# =============================================================================
-# 
-# plt.plot(data['0'],data['frac'])
-# plt.tick_params(axis='x', labelrotation=90)
-# plt.ylim([0,2])
-# plt.title('Data Fraction')
-# plt.figure()
-# 
-# =============================================================================
-data['frac']= (abs(data['frac']) < 3) * data['frac']
-
-#data['frac']= (norm['frac'] > 0) * norm['frac']
-
-                                             
-
-data['frac'] = data['frac'].rolling(60*24*7).mean() 
-
-plt.plot(data['0'],data['frac'])
-plt.figure()
-
-# =============================================================================
-# plt.plot(data['0'],data['frac'])
-# plt.tick_params(axis='x', labelrotation=90)
-# plt.title('6 hours rolling mean frac')
-# plt.figure()
-# =============================================================================
-
-plt.figure()
-import seaborn as sns
-
-plt.plot(data['0'],pres_norm,data['0'],flow_norm,data['0'],pres_pump_norm,'r')
-plt.tick_params(axis='x', labelrotation=45)
-plt.ylabel('Normalised Data')
-plt.xlabel('Date and Time')
-plt.title('Normalised press and flow data')
-plt.legend(['Press Norm','Flow norm'])
-plt.ylim([0,2.3])
-plt.figure()
-
-plt.plot(data['0'],pres_norm,'k')
-sns.lineplot(x=data['0'],y=flow_norm,hue=data['5IAL_3_301.BatchName'])
-plt.tick_params(axis='x', labelrotation=45)
-plt.ylabel('Normalised Data')
-plt.xlabel('Date and Time')
-plt.title('Normalised press and flow data')
-plt.ylim([0,2.3])
-plt.figure()
-
-#%%
-
-plt.plot(data['0'],pres_norm,data['0'],flow_norm)
-plt.tick_params(axis='x', labelrotation=45)
-plt.ylabel('Normalised Data')
-plt.xlabel('Date and Time')
-plt.title('Normalised press and flow data')
-plt.legend(['Press Norm','Flow norm'])
-plt.ylim([0,2.3])
-plt.figure()
-
-
-
-
-plt.plot(data['0'],data['5IAL_3_FIT301.61MF'])
-plt.tick_params(axis='x', labelrotation=45)
-plt.title('Raw flow')
-plt.figure()
-
-
-
-
-#%%
 import seaborn as sns
 
 plt.plot(data['0'],data['5IAL_3_P301.70'])
@@ -195,14 +106,4 @@ plt.figure()
 plt.plot(data['0'],data['5IAL_3_FIT301.61D'])
 plt.tick_params(axis='x', labelrotation=45)
 plt.figure()
-
-#%%
-import plotly.express as px
-fig=px.line(x=data['0'],y=data['5IAL_3_FIT301.61D'])
-
-plt.plot(data['0'],data['5IAL_3_PIT 301.55'])
-plt.ylabel('Pressure [Bar]')
-plt.title('Pressure behind pump')
-plt.ylim([0,1])
-
 
