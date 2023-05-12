@@ -62,4 +62,3 @@ if __name__ ==  '__main__':
     
 
     predictions.to_sql('Predictions_2',con=engine,index=False,if_exists='append')
-#%%

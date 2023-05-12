@@ -4,8 +4,18 @@ Created on Mon May  1 11:22:05 2023
 
 @author: klabbf
 """
+import sys
+import os
 
-class Membrane_Model:
+# Add the ML_Model folder to the places python looks for packages and modules.
+# Do note that this is relative to this folder.
+cur_path=os.getcwd()
+sys.path.append(cur_path.replace('Membrane_Model','ML_Model'))
+
+from ML_Model_Class import ML_Model
+
+
+class Membrane_Model(ML_Model):
     """
     @author: klabbf aka Freek Klabbers, graduation intern at CPP M2 Maintenance
     
@@ -28,12 +38,9 @@ class Membrane_Model:
     
     def __init__(self, raw_data):
         """
-        Iniate the class with raw data
+        Iniate the child class by calling the parent class
         """
-        import os
-        self.current_path=os.getcwd()
-        self.raw_data=raw_data
-        print(os.getcwd())
+        ML_Model.__init__(self, raw_data)
         
     def clean_data(self):
         """
