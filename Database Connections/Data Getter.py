@@ -38,8 +38,8 @@ ODBC_string="DSN=Aspen_Connect;Driver={AspenTech SQLplus}"
 Name_Like='%5IAL%301%'
 
 #Define data start and end times here and only here.
-start='26-APR-23 6:01'
-end='26-APR-23 23:59'
+start='8-MAY-23 6:01'
+end='8-MAY-23 23:59'
 
 datetime_start = datetime.strptime(start, '%d-%b-%y %H:%M') # ignore this
 datetime_end = datetime.strptime(end, '%d-%b-%y %H:%M') # ignore this
@@ -97,6 +97,7 @@ conn.close()
 time_elapsed=time.time()-time_start
 print('Time elapsed to get {} rows of data: {}'.format(len(date_range),time_elapsed))
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 plt.plot(data['0'],data['5IAL_3_P301.70'])
 plt.tick_params(axis='x', labelrotation=90)
