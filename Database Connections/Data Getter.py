@@ -27,6 +27,13 @@ import time
 
 time_start=time.time()
 
+#%%
+import numpy.distutils.system_info as sysinfo
+
+print(sysinfo.platform_bits)
+
+
+
 #%% Settings
 
 #pyodbc connection string, see its documentation for help.

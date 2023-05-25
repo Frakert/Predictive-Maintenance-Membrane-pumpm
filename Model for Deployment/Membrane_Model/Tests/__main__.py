@@ -31,7 +31,7 @@ import pyodbc
 
 if __name__ ==  '__main__':
     # Import data from csv and fix little formating
-    test_data=pd.read_csv(os.getcwd()+'\\Test_Data.csv',parse_dates=[1],index_col=[0])
+    test_data=pd.read_csv(os.getcwd()+'\\Dependencies\\Test_Data.csv',parse_dates=[1],index_col=[0])
     test_data.rename(columns={'0':'Date'},inplace=True)
     test_data.head()
 
@@ -51,7 +51,11 @@ if __name__ ==  '__main__':
     X=Membrane_Model.X
     model=Membrane_Model.model
     predictions=Membrane_Model.predictions
+
     
+    
+
+
     # Write to SQL database
     SQL_conn_string = (r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
                  r'DBQ=%s\Predictions_Membrane_Model.accdb;')%format(dependencies_path)
