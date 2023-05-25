@@ -9,8 +9,14 @@ import os
 
 # Add the ML_Model folder to the places python looks for packages and modules.
 # Do note that this is relative to this folder.
-cur_path=os.getcwd()
-sys.path.append(cur_path.replace('Membrane_Model','ML_Model'))
+from os.path import dirname, abspath, join
+import sys
+
+# Find code directory relative to our directory
+curr_path = dirname(__file__)
+dependencies_path = curr_path + '\\Dependencies'
+parrent_class_path = abspath(join(curr_path, '..','ML_Model'))
+sys.path.append(parrent_class_path)
 
 from ML_Model_Class import ML_Model
 
@@ -80,7 +86,7 @@ class Membrane_Model(ML_Model):
         
         data.drop(['5IAL_3_301.BatchName','Date'],axis=1,inplace=True)
         
-        normalisation_values=pd.read_csv(self.current_path+'\\normalisation_values.csv')
+        normalisation_values=pd.read_csv(self.current_path+'\\Dependencies\\normalisation_values.csv')
         
         data_norm=pd.DataFrame()
         for col in data:
@@ -189,7 +195,7 @@ class Membrane_Model(ML_Model):
         # TO DO: make model filename customizable
         
         model=xgb.XGBClassifier(colsample_bytree=0.8, learning_rate=0.075, max_depth= 3, n_estimators= 500)
-        model.load_model(self.current_path+'\\XGBoost_Membrane_Model.json')
+        model.load_model(self.current_path+'\\Dependencies\\XGBoost_Membrane_Model.json')
         self.model=model
         
         X=self.X
