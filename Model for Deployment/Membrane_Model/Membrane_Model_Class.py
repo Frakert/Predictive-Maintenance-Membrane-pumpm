@@ -67,6 +67,18 @@ class Membrane_Model(ML_Model):
         raw_data['5IAL_3_301.BatchName']= raw_data['5IAL_3_301.BatchName'].fillna('No Batch Specified')
         
         
+        
+        #Check first and last datapoint and check if the dataset cuts off a batch, if so filter it out.
+        batchnames=raw_data['5IAL_3_301.BatchName']
+        batch_list=[batchnames.iloc[0],batchnames.iloc[-1]]
+        blacklist = [x for x in batch_list if x != 'No Batch Specified']
+
+        # Loop over blacklist, filterout all the blacklist items.
+        for i in range(len(blacklist)):
+            raw_data.drop(raw_data[raw_data['5IAL_3_301.BatchName'] == blacklist[i]].index, inplace=True)
+        
+        
+        
         # Filter out everything that is not a batch
         COLUMN_NAME = '5IAL_3_301.BatchName'
         mask = (raw_data[COLUMN_NAME].str.len() >= 11) & (raw_data[COLUMN_NAME].str.len() <= 12)
