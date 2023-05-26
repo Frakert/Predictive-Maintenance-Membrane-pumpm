@@ -17,11 +17,11 @@ Since my ambitions have been expanded to actually deploy the system. For this i 
 I have attempted to retroactivly include as much as i could in one 1 place.\
 \
 The file structure is as follows:
-* **Data Analysis:** includes Kaggle files including output when i was still in the exploratory phase. This code however isnt runnable unless you change the input by letting it read csv files again. Also you will need an envoirment which i have definintly not created (yet). Might fix this in the future with the [kaggle api](https://www.kaggle.com/docs/api).
+* **Data Analysis:** includes Kaggle files including output when i was still in the exploratory phase. The aggregation classifier has been modified so that you can automaticly update the Deployment model by running a single cell, ideal for retraining purposes. 
 
-* **Database connections:** Includes the pieces of code I used to fetch data from the AspenTech database using the ODBC (32-bit) drivers named Aspen SQLplus. This is also includes a guide on how to install it hopefully. Check out the documentation i provided there
+* **Database connections:** Includes the pieces of code I used to fetch data from the AspenTech database using the ODBC (32-bit) drivers named Aspen SQLplus. This is also includes a guide on how to install it . Check out the documentation provided there
 
-* **Model for Deployment:** This folder contains everything the Memebrane_Model Class needs to opperate. It also includes the Membrane_Model class itself. The idea is that if the folder is coppied and the model is called it should work right out of the box.
+* **Model for Deployment:** This folder contains everything the Memebrane_Model Class needs to opperate. It also includes the Membrane_Model class itself. The idea is that if the folder is coppied and the model is called it should work right out of the box. The Membrane_model is dependendt on its parent class ML_model. This should however make everything more reusable and better mmaintanable. If you get confussed by the using of the word class, read into Object-Oriented Programming (OOP).
 
 * **Model Training and Optimisations:** This folder contains all the Kaggle scripts used to try models and shows its peformance (hopefully). These Kaggle files again dont run anymore (for now). Every approach has its own file. The clean aggregating is used to optimise the end model. Here factorial analysis was conducted and validated by k crossfold validation. I also added fetched data from the aspentech database (<100 MB).
 
