@@ -197,8 +197,10 @@ class Ball_Model(ML_Model):
         self.model=model
         
         X=self.X
-        
-        y_pred=model.predict(X)
+        f_names = model.feature_names
+
+
+        y_pred=model.predict(X[f_names])
         
     
         batch_names=X.index.to_series(name='BatchName')
