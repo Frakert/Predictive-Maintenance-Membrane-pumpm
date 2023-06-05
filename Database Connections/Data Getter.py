@@ -45,8 +45,8 @@ ODBC_string="DSN=Aspen_Connect;Driver={AspenTech SQLplus}"
 Name_Like='%5IAL%301%'
 
 #Define data start and end times here and only here.
-start='8-MAY-23 6:01'
-end='8-MAY-23 23:59'
+start='4-JUN-23 12:00'
+end='5-JUN-23 12:00'
 
 datetime_start = datetime.strptime(start, '%d-%b-%y %H:%M') # ignore this
 datetime_end = datetime.strptime(end, '%d-%b-%y %H:%M') # ignore this
@@ -95,8 +95,19 @@ for i in range(len(names)):
     print(' ')
     
 #%% Export to Excel cell
-df.to_csv(filepath)
+df.to_csv(filepath,sep=':')
 print('Exporting Data all done!')
+
+#%% Export to MS Acces SQL database
+
+import sqlalchemy # Dependency: sqlalchemy-access
+from sqlalchemy import create_engine
+
+ODBC_DSN="Aspen Copy DB"
+
+con_string="access+pyodbc://%s" %(ODBC_DSN)
+engine = create_engine(con_string)
+df.to_sql('Historic table',con=engine,index=False,if_exists='replace')
 
 #%% Close connection
 conn.close()
