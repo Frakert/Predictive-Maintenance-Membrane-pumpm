@@ -31,7 +31,7 @@ import pyodbc
 
 if __name__ ==  '__main__':
     # Import data from csv and fix little formating
-    test_data=pd.read_csv(os.getcwd()+'\\Dependencies\\Test_Data.csv',parse_dates=[1],index_col=[0])
+    test_data=pd.read_csv("C:/Users\klabbf/OneDrive - Canon Production Printing Netherlands B.V/Documents/Data-Excel/Python scripting"+'\\Data_%5IAL%301%_from_2022-04-10_12_00_until_2023-06-05_12_00.csv',parse_dates=[1],index_col=[0],sep=':')
     test_data.rename(columns={'0':'Date'},inplace=True)
     test_data.head()
 
@@ -56,10 +56,10 @@ if __name__ ==  '__main__':
     
 
 
-    # Write to SQL database
-    SQL_conn_string = (r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-                 r'DBQ=%s\Predictions_Membrane_Model.accdb;')%format(dependencies_path)
-    Membrane_Model.predictions_to_SQL(SQL_conn_string,'BatchName,[DateTime],Prediction')
+    # # Write to SQL database
+    # SQL_conn_string = (r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
+    #              r'DBQ=%s\Predictions_Membrane_Model.accdb;')%format(dependencies_path)
+    # Membrane_Model.predictions_to_SQL(SQL_conn_string,'BatchName,[DateTime],Prediction')
 
     
 
@@ -74,4 +74,4 @@ if __name__ ==  '__main__':
     engine = create_engine(con_string)
     
 
-    predictions.to_sql('Predictions_2',con=engine,index=False,if_exists='append')
+    predictions.to_sql('Predictions_2',con=engine,index=False,if_exists='replace')
