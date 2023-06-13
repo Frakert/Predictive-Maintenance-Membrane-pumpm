@@ -33,7 +33,6 @@ import numpy.distutils.system_info as sysinfo
 print(sysinfo.platform_bits)
 
 
-
 #%% Settings
 
 #pyodbc connection string, see its documentation for help.
@@ -45,7 +44,7 @@ ODBC_string="DSN=Aspen_Connect;Driver={AspenTech SQLplus}"
 Name_Like='%5IAL%301%'
 
 #Define data start and end times here and only here.
-start='4-JUN-23 12:00'
+start='10-APR-22 12:00'
 end='5-JUN-23 12:00'
 
 datetime_start = datetime.strptime(start, '%d-%b-%y %H:%M') # ignore this
@@ -100,29 +99,30 @@ print('Exporting Data all done!')
 
 #%% Export to MS Acces SQL database
 
-import sqlalchemy # Dependency: sqlalchemy-access
-from sqlalchemy import create_engine
+# import sqlalchemy # Dependency: sqlalchemy-access
+# from sqlalchemy import create_engine
 
-ODBC_DSN="Aspen Copy DB"
+# ODBC_DSN="Aspen Copy DB"
 
-con_string="access+pyodbc://%s" %(ODBC_DSN)
-engine = create_engine(con_string)
-df.to_sql('Historic table',con=engine,index=False,if_exists='replace')
+# con_string="access+pyodbc://%s" %(ODBC_DSN)
+# engine = create_engine(con_string)
+# df.to_sql('Historic table',con=engine,index=False,if_exists='replace')
 
 #%% Close connection
 conn.close()
 
 time_elapsed=time.time()-time_start
 print('Time elapsed to get {} rows of data: {}'.format(len(date_range),time_elapsed))
-import seaborn as sns
-import matplotlib.pyplot as plt
 
-plt.plot(data['0'],data['5IAL_3_P301.70'])
-plt.tick_params(axis='x', labelrotation=90)
-sns.lineplot(data['0'],data['5IAL_3_PIT 301.55'],hue=data['5IAL_3_301.BatchName'])
-plt.figure()
+# import seaborn as sns
+# import matplotlib.pyplot as plt
 
-plt.plot(data['0'],data['5IAL_3_FIT301.61D'])
-plt.tick_params(axis='x', labelrotation=45)
-plt.figure()
+# plt.plot(data['0'],data['5IAL_3_P301.70'])
+# plt.tick_params(axis='x', labelrotation=90)
+# sns.lineplot(data['0'],data['5IAL_3_PIT 301.55'],hue=data['5IAL_3_301.BatchName'])
+# plt.figure()
+
+# plt.plot(data['0'],data['5IAL_3_FIT301.61D'])
+# plt.tick_params(axis='x', labelrotation=45)
+# plt.figure()
 

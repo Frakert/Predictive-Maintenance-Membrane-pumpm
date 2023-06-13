@@ -25,7 +25,7 @@ import pyodbc
 
 if __name__ ==  '__main__':
     # Import data from csv and fix little formating
-    test_data=pd.read_csv("C:/Users\klabbf/OneDrive - Canon Production Printing Netherlands B.V/Documents/Data-Excel/Python scripting"+'\\Data_%5IAL_3_%301%.csv',parse_dates=[1],index_col=[0])
+    test_data=pd.read_csv("C:/Users\klabbf/OneDrive - Canon Production Printing Netherlands B.V/Documents/Data-Excel/Python scripting"+'\\Data_%5IAL%301%_from_2022-04-10_12_00_until_2023-06-05_12_00.csv',parse_dates=[1],sep=":",index_col=[0])
     test_data.rename(columns={'0':'Date'},inplace=True)
     test_data.head()
     print('Data imported')
