@@ -44,8 +44,8 @@ ODBC_string="DSN=Aspen_Connect;Driver={AspenTech SQLplus}"
 Name_Like='%5IAL%301%'
 
 #Define data start and end times here and only here.
-start='10-APR-22 12:00'
-end='5-JUN-23 12:00'
+start='4-APR-23 12:00'
+end='5-APR-23 12:00'
 
 datetime_start = datetime.strptime(start, '%d-%b-%y %H:%M') # ignore this
 datetime_end = datetime.strptime(end, '%d-%b-%y %H:%M') # ignore this
@@ -67,6 +67,7 @@ name_query="SELECT NAME AS NAME_LIST FROM HISTORY WHERE NAME LIKE '%s';"% (Name_
 
 names=pd.read_sql(name_query,conn)
 
+print(names)
 #%% Date time
 
 #Create data array, this way dont have to query time 
