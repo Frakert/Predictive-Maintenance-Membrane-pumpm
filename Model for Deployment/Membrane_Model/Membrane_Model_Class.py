@@ -66,6 +66,22 @@ class Membrane_Model(ML_Model):
         raw_data=self.raw_data
         raw_data['5IAL_3_301.BatchName']= raw_data['5IAL_3_301.BatchName'].fillna('No Batch Specified')
         
+        # Check for Columns that are not supposed to be in the dataset and if all columns are there
+        NAME_LIST=[
+        "Date","5IAL_3_TT301.50","5IAL_3_QIT301.52","5IAL_3_PIT 301.55","5IAL_3_PIT301.63","5IAL_3_QIT301.57","5IAL_3_PIT301.60","5IAL_3_FIT301.61MF","5IAL_3_FIT301.61VF","5IAL_3_FIT301.61D","5IAL_3_P301.70","5IAL_3_R301.71","5IAL_3_P301.72","5IAL_3_301.BatchName","5IAL_3_XPV301.05","5IAL_3_XPV301.06","5IAL_3_XPV301.08","5IAL_3_XPV301.09","5IAL_3_XPV301.22","5IAL_3_XPV301.35","5IAL_3_XPV301.36","5IAL_3_XPV301.42","5IAL_3_XPV301.43","5IAL_3_XPV301.46","5IAL_3_XPV301.53","5IAL_3_XPV301.54","5IAL_3_XPV301.63","5IAL_3_LSL301.51","5IAL_3_LSL301.53","5IAL_3_GSC301.44","5IAL_3_GSO301.44","5IAL_3_LSL301.64","5IAL_3_LSL301.68","5IAL_3_LSLL301.69","5IAL_3_301.OCCUPIED","5IAL_3_LIT301.54","5IAL_3_LSH301.56","5IAL_3_XPV301.13","5IAL_3_WY301.54"
+        ]# All names that should be in columns
+
+        list_extra=list(filter(lambda a: a not in NAME_LIST, test_data))
+        list_missing =list(filter(lambda a: a not in test_data, NAME_LIST))
+
+        if list_extra:
+            warnings.warn("The input pandas dataframe has too many columns, the following columns shouldnt be there: " + ' '.join(str(a) for a in list_extra) +". "+"These columns will now be removed automaticly and will not be used for making predictions." )
+            print(" ")
+            test_data=raw_data.drop(list_extra,axis=1)
+
+        if list_missing:
+            raise Exception("The input pandas dataframe is missing the folowing columns: " + ' '.join(str(a) for a in list_missing))
+
         
         
         #Check first and last datapoint and check if the dataset cuts off a batch, if so filter it out.
